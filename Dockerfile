@@ -7,4 +7,4 @@ WORKDIR /app
 COPY main.py .
 
 
-CMD ["python", "hello.py"]
+CMD ["python", "main.py"]
