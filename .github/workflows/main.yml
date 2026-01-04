@@ -1,25 +1,26 @@
 name: Python Hello World CI/CD
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
 
 jobs:
   build-and-deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'  
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-    - name: Build Docker image
-      run: docker build -t hello-python .
+      - name: Build Docker image
+        run: docker build -t hello-python .
 
-    - name: Run Docker container
-      run: docker run hello-python
+      - name: Run Docker container
+        run: docker run hello-python
